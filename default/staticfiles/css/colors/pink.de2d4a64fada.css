@@ -7,8 +7,8 @@ body{
 .btn-primary.btn-bordered:active,
 .btn-primary.btn-bordered:active:focus,
 .btn-primary.btn-bordered.active{
-	background:#f8c9c8;
-	border:solid 2px #f8c9c8;
+	background:#ffcfce;
+	border:solid 2px #ffcfce;
 	color:#fff;
 }
 .btn-primary:focus,
@@ -18,17 +18,17 @@ body{
 .btn-primary.active,
 .btn-primary.btn-bordered{
 	background:none;
-	border:solid 2px #f8c9c8;
-	color:#f8c9c8;
+	border:solid 2px #ffcfce;
+	color:#ffcfce;
 }
 .date span{
-	border-bottom:solid 2px #f8c9c8;
+	border-bottom:solid 2px #ffcfce;
 }
 .title span{
-	border-color: #f8c9c8 -moz-use-text-color -moz-use-text-color;
+	border-color: #ffcfce -moz-use-text-color -moz-use-text-color;
 }
 .title-block .divider {
-    border-bottom: solid 2px #f8c9c8;
+    border-bottom: solid 2px #ffcfce;
 }
 .social-icons a{
 	border: 4px solid #7b7571;
@@ -36,21 +36,21 @@ body{
 }
 .social-icons a:hover{
 	color:#fff;
-	border: 4px solid #f8c9c8;
-	background: #f8c9c8;
+	border: 4px solid #ffcfce;
+	background: #ffcfce;
 }
 .bg-color-1,.timeline > li > .timeline-badge,.timeline > li > .timeline-end > .timeline-badge {
-	background-color: #f8c9c8;
+	background-color: #ffcfce;
 }
 .circle,.owl-theme .owl-controls .owl-page.active span, .owl-theme .owl-controls.clickable .owl-page:hover span {
-    background: #f8c9c8;
+    background: #ffcfce;
 }
 #ajaxForm .form-control:focus {
-    border-color:#f8c9c8;
+    border-color:#ffcfce;
 }
 h1 span, h2 span, h3 span, h4 span, h5 span, h6 span, .txt-color-1,.navbar-default .navbar-nav > .active > a,.navbar-default .navbar-nav > .active > a:focus,.navbar-default .navbar-nav > .active > a:hover,section#frase i,.final-frase span,#ajaxForm label.checkbox-button:hover,#ajaxForm input[type="checkbox"]:checked + label.checkbox-button{
-    color: #f8c9c8;
+    color: #ffcfce;
 }
 a,a:hover{
-	color: #f8c9c8;
+	color: #ffcfce;
 }

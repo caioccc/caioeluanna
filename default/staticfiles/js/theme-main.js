@@ -67,28 +67,29 @@ $(document).ready(function() {
 	/*==============================
 		5. Ajax Form
 	==============================*/
-	// $('#ajaxFormSubmit').on('click',function(){
-	// 	var Form = $('#ajaxForm');
-	// 	var hasErrors = Form.validator('validate').has('.has-error').length
-	// 	if (hasErrors){
-	//
-	// 	}else{
-	// 		$('#fullscreenloading').show();
-	// 		$('#boxedResult').show();
-	// 		$('#sendResult').html('<div class="uil-rolling-css"><div><div></div><div></div></div></div>');
-	// 		$.ajax({
-	// 			type: 'POST',
-	// 			url: 'send_form.php',
-	// 			data: Form.serialize(),
-	// 			success: function(msg){
-	// 				$('#sendResult').html(msg)
-	// 			},
-	// 			error: function(){
-	// 				$('#sendResult').html('<img src="img/form-icon-error.png"/><br/><span class="title error">Sorry!</span><br/>Your data has not been sent. Please try again.<br /><strong>Error: #AJ001</strong><br /><br /><button class="btn btn-default BtnCloseResult" type="button">Close</button>');
-	// 			}
-	// 		});
-	// 	}
-	// });
+	$('#ajaxFormSubmit').on('click',function(){
+		var Form = $('#ajaxForm');
+		var hasErrors = Form.validator('validate').has('.has-error').length;
+		if (hasErrors){
+
+		}else{
+			$('#fullscreenloading').show();
+			$('#boxedResult').show();
+			$('#sendResult').html('<div class="uil-rolling-css"><div><div></div><div></div></div></div>');
+			$.ajax({
+				type: 'POST',
+				url: '/submit',
+				data: Form.serialize(),
+				success: function(msg){
+					console.log(msg);
+					$('#sendResult').html('<img src="http://marttinfisher.com/themes/bodas/img/form-icon-ok.png"/><br/><span class="title success">Obrigado!</span><br/>Suas informações foram enviadas.<br /><br/><br /><button class="btn btn-default BtnCloseResult" type="button">Close</button>')
+				},
+				error: function(){
+					$('#sendResult').html('<img src="http://marttinfisher.com/themes/bodas/img/form-icon-error.png"/><br/><span class="title error">Desculpe!</span><br/>Seus dados não foram enviados. Por favor tente novamente.<br /><strong>Erro: #CL001</strong><br /><br /><button class="btn btn-default BtnCloseResult" type="button">Close</button>');
+				}
+			});
+		}
+	});
 	$(document).on('click', '.BtnCloseResult', function () {
 		$('#boxedResult').hide();
 		$('#fullscreenloading').hide();

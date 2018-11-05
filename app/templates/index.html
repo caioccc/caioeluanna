@@ -85,6 +85,11 @@
                         <div></div>
                     </div>
                 </div>
+                <div class="uil-rolling-css">
+                    <div>
+                        <button class="" onclick="">Fechar</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -548,25 +553,26 @@
             </div>
             <div class="col-md-8 col-md-offset-2 col-xs-12 text-center">
 
-                <form id="ajaxForm" data-toggle="validator">
+                <form id="ajaxForm" data-toggle="validator" >
+                    {% csrf_token %}
                     <div class="row bot-mrg-20">
-                        <div class="col-md-4 text-center">
-                            <input type="checkbox" id="checkbox-1" name="events[]" value="Pre-Wedding Dinner">
-                            <label for="checkbox-1" class="checkbox-button"><i class="fa fa-circle-o"
-                                                                               aria-hidden="true"></i> Pre-Wedding
-                                Dinner</label>
-                            <p>Victory Gardens Hall, 11 Grant Ave. Carteret NJ 9851 (732) 841-45 90, (732) 634-13 86
-                                info@emailname.com</p>
-                        </div>
-                        <div class="col-md-4 text-center">
-                            <input type="checkbox" id="checkbox-2" name="events[]" value="Ceremony">
+{#                        <div class="col-md-4 text-center">#}
+{#                            <input type="checkbox" id="checkbox-1" name="events[]" value="Pre-Wedding Dinner">#}
+{#                            <label for="checkbox-1" class="checkbox-button"><i class="fa fa-circle-o"#}
+{#                                                                               aria-hidden="true"></i> Pre-Wedding#}
+{#                                Dinner</label>#}
+{#                            <p>Victory Gardens Hall, 11 Grant Ave. Carteret NJ 9851 (732) 841-45 90, (732) 634-13 86#}
+{#                                info@emailname.com</p>#}
+{#                        </div>#}
+                        <div class="col-md-6 text-center">
+                            <input type="checkbox" id="checkbox-2" name="cerimonia" value="Ceremony">
                             <label for="checkbox-2" class="checkbox-button"><i class="fa fa-circle-o"
                                                                                aria-hidden="true"></i> Ceremony</label>
                             <p>Victory Gardens Hall, 11 Grant Ave. Carteret NJ 9851 (732) 841-45 90, (732) 634-13 86
                                 info@emailname.com</p>
                         </div>
-                        <div class="col-md-4 text-center">
-                            <input type="checkbox" id="checkbox-3" name="events[]" value="Party">
+                        <div class="col-md-6 text-center">
+                            <input type="checkbox" id="checkbox-3" name="recepcao" value="Party">
                             <label for="checkbox-3" class="checkbox-button"><i class="fa fa-circle-o"
                                                                                aria-hidden="true"></i> Party</label>
                             <p>Victory Gardens Hall, 11 Grant Ave. Carteret NJ 9851 (732) 841-45 90, (732) 634-13 86
@@ -576,7 +582,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+                                <input type="text" class="form-control" name="name" placeholder="Your Name" max="200" maxlength="200" required>
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
@@ -598,7 +604,7 @@
                     </div>
                 </form>
 
-                <button class="btn btn-primary btn-lg" id="ajaxFormSubmit">I´m Attending</button>
+                <button class="btn btn-primary btn-lg" id="ajaxFormSubmit" type="submit">I´m Attending</button>
             </div>
         </div>
     </div>
@@ -616,8 +622,8 @@
                     <li class="circle">&amp;</li>
                     <li>Luanna</li>
                 </ul>
-                <div class="copyright">All Rights Reserved © | Design: <a href="#"
-                                                                               target="_blank">Caio Marinho</a></div>
+                <div class="copyright">All Rights Reserved © | Design: <span><a href="#"
+                                                                               target="_blank" style="color: #7b7571;">Caio Marinho</a></span></div>
             </div>
         </div>
     </div>
