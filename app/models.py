@@ -24,3 +24,16 @@ class Rsvp(TimeStamped):
 
     def __unicode__(self):
         return u'%s - %s' % (self.nome, self.email)
+
+
+class Recado(TimeStamped):
+    class Meta:
+        verbose_name = "Recado"
+        verbose_name_plural = "Recados"
+    nome = models.CharField(max_length=300)
+    foto = models.TextField(blank=True, null=True)
+    texto = models.TextField()
+    aprovado = models.BooleanField(default=False)
+
+    def __unicode__(self):
+        return u'%s - %s' % (self.id, self.nome)

@@ -3,18 +3,30 @@
 <html lang="en">
 <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-{#    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108439848-2"></script>#}
-{#    <script>#}
-{#        window.dataLayer = window.dataLayer || [];#}
-{##}
-{#        function gtag() {#}
-{#            dataLayer.push(arguments);#}
-{#        }#}
-{##}
-{#        gtag('js', new Date());#}
-{##}
-{#        gtag('config', 'UA-108439848-2');#}
-{#    </script>#}
+    {#    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108439848-2"></script>#}
+    {#    <script>#}
+    {#        window.dataLayer = window.dataLayer || [];#}
+    {##}
+    {#        function gtag() {#}
+    {#            dataLayer.push(arguments);#}
+    {#        }#}
+    {##}
+    {#        gtag('js', new Date());#}
+    {##}
+    {#        gtag('config', 'UA-108439848-2');#}
+    {#    </script>#}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-128756226-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-128756226-1');
+    </script>
+
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -149,8 +161,9 @@
                         <li class=""><a href="#our-story">Our Story</a></li>
                         <li class=""><a href="#gallery">Gallery</a></li>
                         <li class=""><a href="#featured-people">Featured People</a></li>
-                        <li class=""><a href="#gift-registry">Gifts</a></li>
                         <li class=""><a href="#rsvp">RSVP</a></li>
+                        <li class=""><a href="#gift-registry">Gifts</a></li>
+                        <li class=""><a href="#mural">Mural</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container -->
@@ -512,31 +525,6 @@
 </section>
 <!-- END SECTION: featured-people -->
 
-<!-- START SECTION: gift-registry -->
-<section id="gift-registry" class="img-bg-4" data-stellar-background-ratio="0.5">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1 col-xs-12 text-center">
-                <div class="title-block">
-                    <h1>Gifts <span><em>Registry</em></span></h1>
-                    <div class="divider"></div>
-                    <p><em>We are registered at the following shops with our names.</em></p>
-                </div>
-                <div id="owl-logo">
-                    <div class="item"><img src="{% static 'img/gifts-logos/gift-logo-01.png' %}" alt="Owl Image"></div>
-                    <div class="item"><img src="{% static 'img/gifts-logos/gift-logo-02.png' %}" alt="Owl Image"></div>
-                    <div class="item"><img src="{% static 'img/gifts-logos/gift-logo-03.png' %}" alt="Owl Image"></div>
-                    <div class="item"><img src="{% static 'img/gifts-logos/gift-logo-04.png' %}" alt="Owl Image"></div>
-                    <div class="item"><img src="{% static 'img/gifts-logos/gift-logo-05.png' %}" alt="Owl Image"></div>
-                    <div class="item"><img src="{% static 'img/gifts-logos/gift-logo-06.png' %}" alt="Owl Image"></div>
-                    <div class="item"><img src="{% static 'img/gifts-logos/gift-logo-07.png' %}" alt="Owl Image"></div>
-                    <div class="item"><img src="{% static 'img/gifts-logos/gift-logo-08.png' %}" alt="Owl Image"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- END SECTION: gift-registry -->
 
 <!-- START SECTION: rsvp -->
 <section id="rsvp">
@@ -553,17 +541,17 @@
             </div>
             <div class="col-md-8 col-md-offset-2 col-xs-12 text-center">
 
-                <form id="ajaxForm" data-toggle="validator" >
+                <form id="ajaxForm" data-toggle="validator">
                     {% csrf_token %}
                     <div class="row bot-mrg-20">
-{#                        <div class="col-md-4 text-center">#}
-{#                            <input type="checkbox" id="checkbox-1" name="events[]" value="Pre-Wedding Dinner">#}
-{#                            <label for="checkbox-1" class="checkbox-button"><i class="fa fa-circle-o"#}
-{#                                                                               aria-hidden="true"></i> Pre-Wedding#}
-{#                                Dinner</label>#}
-{#                            <p>Victory Gardens Hall, 11 Grant Ave. Carteret NJ 9851 (732) 841-45 90, (732) 634-13 86#}
-{#                                info@emailname.com</p>#}
-{#                        </div>#}
+                        {#                        <div class="col-md-4 text-center">#}
+                        {#                            <input type="checkbox" id="checkbox-1" name="events[]" value="Pre-Wedding Dinner">#}
+                        {#                            <label for="checkbox-1" class="checkbox-button"><i class="fa fa-circle-o"#}
+                        {#                                                                               aria-hidden="true"></i> Pre-Wedding#}
+                        {#                                Dinner</label>#}
+                        {#                            <p>Victory Gardens Hall, 11 Grant Ave. Carteret NJ 9851 (732) 841-45 90, (732) 634-13 86#}
+                        {#                                info@emailname.com</p>#}
+                        {#                        </div>#}
                         <div class="col-md-6 text-center">
                             <input type="checkbox" id="checkbox-2" name="cerimonia" value="Ceremony">
                             <label for="checkbox-2" class="checkbox-button"><i class="fa fa-circle-o"
@@ -582,7 +570,8 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="name" placeholder="Your Name" max="200" maxlength="200" required>
+                                <input type="text" class="form-control" name="name" placeholder="Your Name" max="200"
+                                       maxlength="200" required>
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>
@@ -611,6 +600,106 @@
 </section>
 <!-- END SECTION: rsvp -->
 
+<!-- START SECTION: gift-registry -->
+<section id="gift-registry" class="img-bg-4" data-stellar-background-ratio="0.5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1 col-xs-12 text-center">
+                <div class="title-block">
+                    <h1>Gifts <span><em>Registry</em></span></h1>
+                    <div class="divider"></div>
+                    <p><em>We are registered at the following shops with our names.</em></p>
+                </div>
+                <div id="owl-logo">
+                    <div class="item"><img src="{% static 'img/gifts-logos/gift-logo-01.png' %}" alt="Owl Image"></div>
+                    <div class="item"><img src="{% static 'img/gifts-logos/gift-logo-02.png' %}" alt="Owl Image"></div>
+                    <div class="item"><img src="{% static 'img/gifts-logos/gift-logo-03.png' %}" alt="Owl Image"></div>
+                    <div class="item"><img src="{% static 'img/gifts-logos/gift-logo-04.png' %}" alt="Owl Image"></div>
+                    <div class="item"><img src="{% static 'img/gifts-logos/gift-logo-05.png' %}" alt="Owl Image"></div>
+                    <div class="item"><img src="{% static 'img/gifts-logos/gift-logo-06.png' %}" alt="Owl Image"></div>
+                    <div class="item"><img src="{% static 'img/gifts-logos/gift-logo-07.png' %}" alt="Owl Image"></div>
+                    <div class="item"><img src="{% static 'img/gifts-logos/gift-logo-08.png' %}" alt="Owl Image"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END SECTION: gift-registry -->
+
+<!-- START SECTION: mural -->
+<section id="mural">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1 col-xs-12 text-center">
+                <div class="title-block">
+                    <h1>Mural de <span><em>Recados</em></span></h1>
+                    <div class="divider"></div>
+                    <p><em>Please select the events you are going to attend, and fill the following form with to
+                        confirm.</em></p>
+                </div>
+
+            </div>
+            <div class="col-md-8 col-md-offset-2 col-xs-12 text-center">
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2 col-xs-12">
+                        {% for recado in recados %}
+                            <div class="featured">
+                                <img src="{% static 'img/featured/featured-01.jpg' %}" class="img-responsive img-circle"
+                                     alt="Groom"/>
+                                <div class="text">
+                                    <h2>{{ recado.nome }}</h2>
+                                    <p>{{ recado.texto }}</p>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-8 col-md-offset-2 col-xs-12 text-center">
+
+                <form id="ajaxFormMural" data-toggle="validator">
+                    {% csrf_token %}
+                    <div class="row bot-mrg-20">
+                        {#                        <div class="col-md-4 text-center">#}
+                        {#                            <input type="checkbox" id="checkbox-1" name="events[]" value="Pre-Wedding Dinner">#}
+                        {#                            <label for="checkbox-1" class="checkbox-button"><i class="fa fa-circle-o"#}
+                        {#                                                                               aria-hidden="true"></i> Pre-Wedding#}
+                        {#                                Dinner</label>#}
+                        {#                            <p>Victory Gardens Hall, 11 Grant Ave. Carteret NJ 9851 (732) 841-45 90, (732) 634-13 86#}
+                        {#                                info@emailname.com</p>#}
+                        {#                        </div>#}
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="name" placeholder="Your Name" max="200"
+                                       maxlength="200" required>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <textarea rows="5" class="form-control" name="message"
+                                          placeholder="Write your message...​" required></textarea>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <button class="btn btn-primary btn-lg" id="ajaxFormMuralSubmit" type="submit">Enviar Recado</button>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END SECTION: mural -->
+
 <!-- START: footer -->
 <section id="footer" class="img-bg-5" data-stellar-background-ratio="0.5">
     <div class="container">
@@ -623,7 +712,8 @@
                     <li>Luanna</li>
                 </ul>
                 <div class="copyright">All Rights Reserved © | Design: <span><a href="#"
-                                                                               target="_blank" style="color: #7b7571;">Caio Marinho</a></span></div>
+                                                                                target="_blank" style="color: #7b7571;">Caio Marinho</a></span>
+                </div>
             </div>
         </div>
     </div>
