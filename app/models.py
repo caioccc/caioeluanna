@@ -37,3 +37,12 @@ class Recado(TimeStamped):
 
     def __unicode__(self):
         return u'%s - %s' % (self.id, self.nome)
+
+
+class Produto(TimeStamped):
+    url = models.CharField(max_length=300, blank=True, null=True)
+    img = models.URLField(blank=True, null=True)
+    nome = models.CharField(max_length=300, blank=True, null=True)
+    preco = models.CharField(max_length=300, blank=True, null=True)
+    parcelas = models.CharField(max_length=300, blank=True, null=True)
+    categoria = models.CharField(max_length=300, blank=True, null=True)
