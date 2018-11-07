@@ -13,6 +13,7 @@ from bs4 import BeautifulSoup
 
 categoria = 'geladeira'
 
+
 def get_americanas(categoria):
     base_url = 'https://www.americanas.com.br'
     url = base_url + '/busca/' + categoria
@@ -47,12 +48,11 @@ def get_magazine_luiza(categoria):
         try:
             content = requests.get(url).content
             it = BeautifulSoup(content, 'html.parser')
-            preco = it.find('span', {'class':'price-template__text'}).text
+            preco = it.find('span', {'class': 'price-template__text'}).text
             parcelas = it.find('div', {'class': 'price-template'}).text
         except (Exception,):
             preco = ''
             parcelas = ''
-
 
         try:
             if not (Produto.objects.filter(nome=nome).exists() or Produto.objects.filter(url=url).exists()):
@@ -63,49 +63,31 @@ def get_magazine_luiza(categoria):
 
 
 class IndexView(TemplateView):
-    template_name = 'index.html'
+    template_name = 'index_2.html'
 
     def get(self, request, *args, **kwargs):
-        # get_magazine_luiza(categoria)
         context = self.get_context_data(**kwargs)
-        context['recados'] = Recado.objects.filter(aprovado=True)
+        context['itens'] = Produto.objects.all()
         return self.render_to_response(context)
-
 
 
 def submit_rsvp(request):
     data = request.POST
-    name = data.get('name')
-    if 'cerimonia' in data:
-        cerimonia = True
+    categoria = data.get('categoria')
+    type = data.get('loja')
+    print(categoria)
+    print(type)
+    if type == 'ml' and categoria:
+        try:
+            get_magazine_luiza(categoria)
+            return JsonResponse({'message': u'Confirmação realizada com sucesso!'})
+        except:
+            raise Http404
+    elif type == 'americanas' and categoria:
+        try:
+            get_americanas(categoria)
+            return JsonResponse({'message': u'Confirmação realizada com sucesso!'})
+        except:
+            raise Http404
     else:
-        cerimonia = False
-    if 'recepcao' in data:
-        recepcao = True
-    else:
-        recepcao = False
-    message = data.get('message')
-    email = data.get('email')
-    try:
-        objeto = Rsvp(nome=name, email=email, cerimonia=cerimonia, recepcao=recepcao, mensagem=message)
-        objeto.save()
-        # messages.success(request, u'Confirmação realizada com sucesso!')
-        return JsonResponse({'message': u'Confirmação realizada com sucesso!'})
-    except:
-        # messages.error(request, u'Houve algum erro no formulário.')
-        raise Http404
-
-
-def submit_recado(request):
-    data = request.POST
-    name = data.get('name')
-    texto = data.get('message')
-    # foto = data.get('photo')
-    try:
-        objeto = Recado(nome=name, texto=texto)
-        objeto.save()
-        # messages.success(request, u'Confirmação realizada com sucesso!')
-        return JsonResponse({'message': u'Seu recado passará por aprovação dos noivos! Obrigado.'})
-    except:
-        # messages.error(request, u'Houve algum erro no formulário.')
-        raise Http404
+        raise  Http404

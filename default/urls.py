@@ -17,7 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 
-from app.views import IndexView, submit_rsvp, submit_recado
+from app.views import IndexView, submit_rsvp
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -25,5 +25,4 @@ urlpatterns = [
     url(r'^admin/login/$', auth_views.login),
     url(r'^$', IndexView.as_view(), name='index_view'),
     url(r'^submit', submit_rsvp, name='submit_rsvp'),
-    url(r'^send-recado', submit_recado, name='submit_recado')
 ]
