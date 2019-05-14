@@ -2,20 +2,6 @@
 {% load staticfiles %}
 <html lang="en">
 <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    {#    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108439848-2"></script>#}
-    {#    <script>#}
-    {#        window.dataLayer = window.dataLayer || [];#}
-    {##}
-    {#        function gtag() {#}
-    {#            dataLayer.push(arguments);#}
-    {#        }#}
-    {##}
-    {#        gtag('js', new Date());#}
-    {##}
-    {#        gtag('config', 'UA-108439848-2');#}
-    {#    </script>#}
-    <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-128756226-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -201,9 +187,8 @@
                     <h2>Caio <span>Marinho</span></h2>
                     <img src="{% static 'img/caio_pic.jpg' %}" class="img-responsive img-circle" alt="Groom"/>
                     <p>Cristão. 25 anos. Colorado desde criança. Workaholic desde os períodos de base da UFCG.
-                        Desenvolvedor de Software especializado em Sistemas Web (Frontend/Backend). Adora música
-                        em geral, porém influenciado pelo Rock do Oficina G3. Toca teclado, baixo e violão
-                        sem fins lucrativos.
+                        Desenvolvedor de Software. Adora música
+                        em geral, porém influenciado pelo Rock do Oficina G3. Toca teclado, baixo e violão.
                     </p>
                     <div class="social-icons">
                         <a href="https://www.facebook.com/caio.fabiomarinho"
@@ -212,10 +197,6 @@
                            target="_blank" class="instagram"><i class="fa fa-instagram"></i></a>
                         <a href="mailto:caiomarinho8@gmail.com"
                            target="_blank" class="twitter"><i class="fa fa-envelope"></i></a>
-                        <!-- <a href="#" target="_blank" class="pinterest"><i class="fa fa-pinterest-p"></i></a>
-                        <a href="#" target="_blank" class="google"><i class="fa fa-google-plus"></i></a>
-                        <a href="#" target="_blank" class="youtube"><i class="fa fa-youtube-play"></i></a>
-                        <a href="#" target="_blank" class="vimeo"><i class="fa fa-vimeo"></i></a> -->
                     </div>
                 </div>
             </div>
@@ -233,10 +214,6 @@
                            target="_blank" class="instagram"><i class="fa fa-instagram"></i></a>
                         <a href="mailto:lcarollynne@gmail.com"
                            target="_blank" class="twitter"><i class="fa fa-envelope"></i></a>
-                        <!-- <a href="#" target="_blank" class="pinterest"><i class="fa fa-pinterest-p"></i></a>
-                        <a href="#" target="_blank" class="google"><i class="fa fa-google-plus"></i></a>
-                        <a href="#" target="_blank" class="youtube"><i class="fa fa-youtube-play"></i></a>
-                        <a href="#" target="_blank" class="vimeo"><i class="fa fa-vimeo"></i></a> -->
                     </div>
                 </div>
             </div>
@@ -280,7 +257,7 @@
                 <div class="timeline-badge"><i class="fa fa-heart" aria-hidden="true"></i></div>
                 <div class="timeline-panel">
                     <div class="timeline-heading">
-                        <h2 class="timeline-title">May <span>04</span> 2015</h2>
+                        <h2 class="timeline-title">Nov <span>29</span> 2015</h2>
                     </div>
                     <div class="timeline-body text-center">
                         <img src="{% static 'img/story/story-img-01.jpg' %}" class="img-responsive" alt="Our Story"/>
@@ -294,7 +271,7 @@
                 <div class="timeline-badge"><i class="fa fa-heart" aria-hidden="true"></i></div>
                 <div class="timeline-panel">
                     <div class="timeline-heading">
-                        <h2 class="timeline-title">Dec <span>28</span> 2015</h2>
+                        <h2 class="timeline-title">Fev <span>07</span> 2016</h2>
                     </div>
                     <div class="timeline-body text-center">
                         <img src="{% static 'img/story/story-img-02.jpg' %}" class="img-responsive" alt="Our Story"/>
@@ -310,7 +287,7 @@
                 <div class="timeline-badge"><i class="fa fa-heart" aria-hidden="true"></i></div>
                 <div class="timeline-panel">
                     <div class="timeline-heading">
-                        <h2 class="timeline-title">Feb <span>16</span> 2016</h2>
+                        <h2 class="timeline-title">Oct <span>11</span> 2016</h2>
                     </div>
                     <div class="timeline-body text-center">
                         <img src="{% static 'img/story/story-img-03.jpg' %}" class="img-responsive" alt="Our Story"/>
@@ -324,7 +301,7 @@
                 <div class="timeline-badge"><i class="fa fa-heart" aria-hidden="true"></i></div>
                 <div class="timeline-panel">
                     <div class="timeline-heading">
-                        <h2 class="timeline-title">Oct <span>18</span> 2017</h2>
+                        <h2 class="timeline-title">Oct <span>21</span> 2018</h2>
                     </div>
                     <div class="timeline-body text-center">
                         <img src="{% static 'img/story/story-img-04.jpg' %}" class="img-responsive" alt="Our Story"/>
@@ -342,7 +319,7 @@
         </ul>
         <div class="row">
             <div class="col-md-8 col-md-offset-2 col-xs-12 text-center">
-                <div class="final-frase">Now we are ready for the <span>next step...</span></div>
+                <div class="final-frase">Agora nós estamos prontos para o <span>próximo passo...</span></div>
             </div>
         </div>
     </div>
@@ -579,14 +556,6 @@
                 <form id="ajaxForm" data-toggle="validator">
                     {% csrf_token %}
                     <div class="row bot-mrg-20">
-                        {#                        <div class="col-md-4 text-center">#}
-                        {#                            <input type="checkbox" id="checkbox-1" name="events[]" value="Pre-Wedding Dinner">#}
-                        {#                            <label for="checkbox-1" class="checkbox-button"><i class="fa fa-circle-o"#}
-                        {#                                                                               aria-hidden="true"></i> Pre-Wedding#}
-                        {#                                Dinner</label>#}
-                        {#                            <p>Victory Gardens Hall, 11 Grant Ave. Carteret NJ 9851 (732) 841-45 90, (732) 634-13 86#}
-                        {#                                info@emailname.com</p>#}
-                        {#                        </div>#}
                         <div class="col-md-6 text-center">
                             <input type="checkbox" id="checkbox-2" name="cerimonia" value="Ceremony">
                             <label for="checkbox-2" class="checkbox-button"><i class="fa fa-circle-o"
@@ -705,14 +674,6 @@
                 <form id="ajaxFormMural" data-toggle="validator">
                     {% csrf_token %}
                     <div class="row bot-mrg-20">
-                        {#                        <div class="col-md-4 text-center">#}
-                        {#                            <input type="checkbox" id="checkbox-1" name="events[]" value="Pre-Wedding Dinner">#}
-                        {#                            <label for="checkbox-1" class="checkbox-button"><i class="fa fa-circle-o"#}
-                        {#                                                                               aria-hidden="true"></i> Pre-Wedding#}
-                        {#                                Dinner</label>#}
-                        {#                            <p>Victory Gardens Hall, 11 Grant Ave. Carteret NJ 9851 (732) 841-45 90, (732) 634-13 86#}
-                        {#                                info@emailname.com</p>#}
-                        {#                        </div>#}
 
                     </div>
                     <div class="row">
@@ -835,15 +796,6 @@
     }
 </style>
 
-{#<div class="color-switch">#}
-{#    <button value="pink" data-color="#F9667E" style="background:#F9667E;" class="active"></button>#}
-{#    <button value="nude" data-color="#C3A180" style="background:#C3A180;"></button>#}
-{#    <button value="violet" data-color="#6A5674" style="background:#6A5674;"></button>#}
-{#    <br>#}
-{#    <button value="blue" data-color="#748392" style="background:#748392;"></button>#}
-{#    <button value="green" data-color="#92A568" style="background:#92A568;"></button>#}
-{#    <div class="icon"><i class="fa fa-cog" aria-hidden="true"></i></div>#}
-{#</div>#}
 <!-- Sticky Navbar -->
 <script type="text/javascript" src="{% static 'js/jquery.sticky.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/jquery.nav.js' %}"></script>
