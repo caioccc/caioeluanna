@@ -1,13 +1,12 @@
 # -*- coding: UTF-8 -*-
 
-from django.contrib import messages
 from django.http import JsonResponse, Http404
-from django.shortcuts import render, redirect
-
 # Create your views here.
 from django.views.generic import TemplateView
 
-from app.models import Rsvp, Recado
+from app.models import Rsvp, Recado, Pagina_Inicio, Pagina_Noivos, Pagina_Frase, Pagina_Timeline, Pagina_Contador, \
+    Pagina_Galeria, Pagina_Padrinhos, Pagina_RSVP, Pagina_ListaPresentes, Pagina_Mural, Pagina_Footer, Noivo, Noiva, \
+    Recepcao, CategoriaGaleria
 
 
 class IndexView(TemplateView):
@@ -16,8 +15,33 @@ class IndexView(TemplateView):
     def get(self, request, *args, **kwargs):
         context = self.get_context_data(**kwargs)
         context['recados'] = Recado.objects.filter(aprovado=True)
+        pi = Pagina_Inicio.objects.first()
+        pn = Pagina_Noivos.objects.first()
+        pf = Pagina_Frase.objects.first()
+        pt = Pagina_Timeline.objects.first()
+        pc = Pagina_Contador.objects.first()
+        pg = Pagina_Galeria.objects.first()
+        pp = Pagina_Padrinhos.objects.first()
+        pr = Pagina_RSVP.objects.first()
+        pl = Pagina_ListaPresentes.objects.first()
+        pm = Pagina_Mural.objects.first()
+        pfo = Pagina_Footer.objects.first()
+        context['inicio'] = pi
+        context['noivos'] = pn
+        context['frase'] = pf
+        context['timeline'] = pt
+        context['contador'] = pc
+        context['galeria'] = pg
+        context['padrinhos'] = pp
+        context['rsvp_page'] = pr
+        context['presentes'] = pl
+        context['mural'] = pm
+        context['footer'] = pfo
+        context['noivo'] = Noivo.objects.first()
+        context['noiva'] = Noiva.objects.first()
+        context['recepcao'] = Recepcao.objects.first()
+        context['categorias_galeria'] = CategoriaGaleria.objects.all()
         return self.render_to_response(context)
-
 
 
 def submit_rsvp(request):

@@ -2,20 +2,6 @@
 {% load staticfiles %}
 <html lang="en">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-128756226-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-
-        gtag('js', new Date());
-
-        gtag('config', 'UA-128756226-1');
-    </script>
-
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,15 +11,15 @@
     <meta name="keywords"
           content="template,html,design,web,frontend,wedding,bodas,website,marriage,bride,groom,responsive,themeforest,envato"/>
     <meta name="description"
-          content="Caio e Luanna - Wedding site."/>
+          content="{{ noivo.nome }} e {{ noiva.nome }} - Wedding site."/>
 
-    <meta property="og:title" content="Caio e Luanna - Wedding"/>
+    <meta property="og:title" content="{{ noivo.nome }} e {{ noiva.nome }} - Wedding"/>
     <meta property="og:url" content="#"/>
     <meta property="og:image" content="#"/>
-    <meta property="og:site_name" content="Caio e Luanna"/>
-    <meta property="og:description" content="Caio e Luanna - Wedding site."/>
+    <meta property="og:site_name" content="{{ noivo.nome }} e {{ noiva.nome }} "/>
+    <meta property="og:description" content="{{ noivo.nome }} e {{ noiva.nome }}  - Wedding site."/>
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Caio e Luanna</title>
+    <title>{{ noivo.nome }} e {{ noiva.nome }} </title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
@@ -63,14 +49,102 @@
     <!-- Theme Main Style -->
     <link rel="stylesheet" href="{% static 'css/theme-style.css' %}">
 
+    <style>
+        body {
+            color: #7b7571;
+        }
+
+        .btn-primary,
+        .btn-primary.btn-bordered:focus,
+        .btn-primary.btn-bordered:hover,
+        .btn-primary.btn-bordered:active,
+        .btn-primary.btn-bordered:active:focus,
+        .btn-primary.btn-bordered.active {
+            background: {{ recepcao.cor_casamento }};
+            border: solid 2px{{ recepcao.cor_casamento }};
+            color: #fff;
+        }
+
+        .btn-primary:focus,
+        .btn-primary:hover,
+        .btn-primary:active,
+        .btn-primary:active:focus,
+        .btn-primary.active,
+        .btn-primary.btn-bordered {
+            background: none;
+            border: solid 2px{{ recepcao.cor_casamento }};
+            color: {{ recepcao.cor_casamento }};
+        }
+
+        .date span {
+            border-bottom: solid 2px{{ recepcao.cor_casamento }};
+        }
+
+        .title span {
+            border-color: {{ recepcao.cor_casamento }} -moz-use-text-color -moz-use-text-color;
+        }
+
+        .title-block .divider {
+            border-bottom: solid 2px{{ recepcao.cor_casamento }};
+        }
+
+        .social-icons a {
+            border: 4px solid #7b7571;
+            background: #7b7571;
+        }
+
+        .social-icons a:hover {
+            color: #fff;
+            border: 4px solid{{ recepcao.cor_casamento }};
+            background: {{ recepcao.cor_casamento }};
+        }
+
+        .bg-color-1, .timeline > li > .timeline-badge, .timeline > li > .timeline-end > .timeline-badge {
+            background-color: {{ recepcao.cor_casamento }};
+        }
+
+        .circle, .owl-theme .owl-controls .owl-page.active span, .owl-theme .owl-controls.clickable .owl-page:hover span {
+            background: {{ recepcao.cor_casamento }};
+        }
+
+        #ajaxForm .form-control:focus {
+            border-color: {{ recepcao.cor_casamento }};
+        }
+
+        h1 span, h2 span, h3 span, h4 span, h5 span, h6 span, .txt-color-1, .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover, section#frase i, .final-frase span, #ajaxForm label.checkbox-button:hover, #ajaxForm input[type="checkbox"]:checked + label.checkbox-button {
+            color: {{ recepcao.cor_casamento }};
+        }
+
+        a, a:hover {
+            color: {{ recepcao.cor_casamento }};
+        }
+
+        section#home {
+            background: url({{ inicio.foto_background_url }}) no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            text-align: center;
+            height: 800px;
+            padding: 50px 0px;
+            position: relative;
+            padding-top: 6%;
+        }
+
+        section.img-bg-2 {
+            background: url({{ frase.foto_background_url }}) no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            color: #FFF;
+        }
+    </style>
+
     <!--========================Color Variant====================-->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/colors/pink.css' %}">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
 <body>
@@ -119,17 +193,18 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <h3 class="title"><span></span>Vamos nos casar!<span></span></h3>
+                <h3 class="title"><span></span>{{ inicio.frase }}<span></span></h3>
                 <ul class="names">
-                    <li>Caio</li>
+                    <li>{{ noivo.nome }}</li>
                     <li class="circle">&amp;</li>
-                    <li>Luanna</li>
+                    <li>{{ noiva.nome }}</li>
                 </ul>
-                <div class="date"><span>21</span> Abril 2020</div>
-                <div class="hour">9:00 <span>am</span></div>
+                <div class="date"><span>{{ recepcao.data|date:"d" }}</span> {{ recepcao.data|date:"F" }}
+                    de {{ recepcao.data|date:"Y" }}</div>
+                <div class="hour">{{ recepcao.hora|time:"H:i" }}</div>
                 <div class="place">
-                    <h3>Igreja de Deus no Brasil</h3>
-                    <p>Rua Oswaldo Cruz, 1375, Centenário - Campina Grande, PB</p>
+                    <h3>{{ recepcao.local }}</h3>
+                    <p>{{ recepcao.endereco }}</p>
                 </div>
             </div>
         </div>
@@ -144,9 +219,9 @@
             <div class="container">
                 <a class="navbar-brand" href="#">
                     <ul class="names">
-                        <li>Caio</li>
+                        <li>{{ noivo.nome }}</li>
                         <li class="circle">&amp;</li>
-                        <li>Luanna</li>
+                        <li>{{ noiva.nome }}</li>
                     </ul>
                 </a>
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -163,13 +238,27 @@
                 <div class="collapse navbar-collapse" id="nav_menu">
                     <ul id="nav_list" class="nav navbar-nav navbar-right">
                         <li class="active"><a href="#home">Início</a></li>
-                        <li class=""><a href="#couple">Os Noivos</a></li>
-                        <li class=""><a href="#our-story">Nossa História</a></li>
-                        <li class=""><a href="#gallery">Galeria</a></li>
-                        <li class=""><a href="#featured-people">Padrinhos</a></li>
-                        <li class=""><a href="#rsvp">RSVP</a></li>
-                        <li class=""><a href="#gift-registry">Lista de Presentes</a></li>
-                        <li class=""><a href="#mural">Mural</a></li>
+                        {% if noivos.habilitado %}
+                            <li class=""><a href="#couple">{{ noivos.titulo_menu }}</a></li>
+                        {% endif %}
+                        {% if timeline.habilitado %}
+                            <li class=""><a href="#our-story">Nossa História</a></li>
+                        {% endif %}
+                        {% if galeria.habilitado %}
+                            <li class=""><a href="#gallery">Galeria</a></li>
+                        {% endif %}
+                        {% if padrinhos.habilitado %}
+                            <li class=""><a href="#featured-people">Padrinhos</a></li>
+                        {% endif %}
+                        {% if rsvp_page.habilitado %}
+                            <li class=""><a href="#rsvp">RSVP</a></li>
+                        {% endif %}
+                        {% if presentes.habilitado %}
+                            <li class=""><a href="#gift-registry">Lista de Presentes</a></li>
+                        {% endif %}
+                        {% if mural.habilitado %}
+                            <li class=""><a href="#mural">Mural</a></li>
+                        {% endif %}
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container -->
@@ -179,906 +268,479 @@
 <!-- END: main-sticky-nav -->
 
 <!-- START SECTION: couple -->
-<section id="couple" class="bg-gray-1">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-xs-12 text-center">
-                <div class="profile">
-                    <h2>Caio <span>Marinho</span></h2>
-                    <img src="{% static 'img/caiofmb.png' %}" class="img-responsive img-circle"
-                         style="width: 320px; height: 320px;" alt="Groom"/>
-                    <p>Cristão. 25 anos. Colorado desde criança. Workaholic desde os períodos de base da UFCG.
-                        Desenvolvedor de Software. Adora música
-                        em geral, porém influenciado pelo Rock do Oficina G3. Toca teclado, baixo e violão. Amo ler os
-                        best-sellers do momento.
-                    </p>
-                    <div class="social-icons">
-                        <a href="https://www.facebook.com/caio.fabiomarinho"
-                           target="_blank" class="facebook"><i class="fa fa-facebook"></i></a>
-                        <a href="https://www.instagram.com/caio.marinh/"
-                           target="_blank" class="instagram"><i class="fa fa-instagram"></i></a>
-                        <a href="mailto:caiomarinho8@gmail.com"
-                           target="_blank" class="twitter"><i class="fa fa-envelope"></i></a>
+{% if noivos.habilitado %}
+    <section id="couple" class="bg-gray-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-xs-12 text-center">
+                    <div class="profile">
+                        <h2>{{ noivo.nome }} <span>{{ noivo.sobrenome }}</span></h2>
+                        <img src="{{ noivo.foto_url }}" class="img-responsive img-circle"
+                             style="width: 320px; height: 320px;" alt="Groom"/>
+                        <p>
+                            {{ noivo.descricao }}
+                        </p>
+                        <div class="social-icons">
+                            <a href="{{ noivo.facebook }}"
+                               target="_blank" class="facebook"><i class="fa fa-facebook"></i></a>
+                            <a href="{{ noivo.instagram }}"
+                               target="_blank" class="instagram"><i class="fa fa-instagram"></i></a>
+                            <a href="mailto:{{ noivo.email }}"
+                               target="_blank" class="twitter"><i class="fa fa-envelope"></i></a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6 col-xs-12 text-center">
-                <div class="profile">
-                    <h2>Luanna <span>Oliveira</span></h2>
-                    <img src="{% static 'img/luannac.png' %}" class="img-responsive img-circle"
-                         style="width: 320px; height: 320px;" alt="Groom"/>
-                    <p>Cristã, 23 anos. Tem o coração dividido entre Caruaru-PE, onde nasceu, e Campina Grande-PB, onde
-                        mora. Ama ler, cantar e fazer amizade com um monte de gente. É enfermeira de profissão e
-                        apaixonada por viajar.</p>
-                    <div class="social-icons">
-                        <a href="https://www.facebook.com/luanna.oliveira.963"
-                           target="_blank" class="facebook"><i class="fa fa-facebook"></i></a>
-                        <a href="https://www.instagram.com/luannacarollynne/"
-                           target="_blank" class="instagram"><i class="fa fa-instagram"></i></a>
-                        <a href="mailto:lcarollynne@gmail.com"
-                           target="_blank" class="twitter"><i class="fa fa-envelope"></i></a>
+                <div class="col-md-6 col-xs-12 text-center">
+                    <div class="profile">
+                        <h2>{{ noiva.nome }} <span>{{ noiva.sobrenome }}</span></h2>
+                        <img src="{{ noiva.foto_url }}" class="img-responsive img-circle"
+                             style="width: 320px; height: 320px;" alt="Groom"/>
+                        <p>
+                            {{ noiva.descricao }}
+                        </p>
+                        <div class="social-icons">
+                            <a href="{{ noiva.facebook }}"
+                               target="_blank" class="facebook"><i class="fa fa-facebook"></i></a>
+                            <a href="{{ noiva.instagram }}"
+                               target="_blank" class="instagram"><i class="fa fa-instagram"></i></a>
+                            <a href="mailto:{{ noiva.email }}"
+                               target="_blank" class="twitter"><i class="fa fa-envelope"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+{% endif %}
 <!-- END SECTION: couple -->
 
 <!-- START SECTION: frase -->
-<section id="frase" class="img-bg-2" data-stellar-background-ratio="0.5">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 col-xs-12 text-center">
-                <h2><i class="fa fa-quote-left" aria-hidden="true"></i>
-                    Esse é o dia que nosso Pai escolheu cada detalhe
-                    e será uma honra ter você no momento mais incrível
-                    das nossas vidas, onde finalmente nos tornaremos um.
-                    <i class="fa fa-quote-right" aria-hidden="true"></i></h2>
+{% if frase.habilitado %}
+    <section id="frase" class="img-bg-2" data-stellar-background-ratio="0.5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 col-xs-12 text-center">
+                    <h2><i class="fa fa-quote-left" aria-hidden="true"></i>
+                        {{ frase.frase }}
+                        <i class="fa fa-quote-right" aria-hidden="true"></i></h2>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+{% endif %}
 <!-- END SECTION: frase -->
 
 <!-- START SECTION: our-story -->
-<section id="our-story">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 col-xs-12 text-center">
-                <div class="title-block">
-                    <h1>Nossa <span><em>História</em></span></h1>
-                    <div class="divider"></div>
-                    <p><em>Tudo começou quando um dia Luanna visitou a igreja que Caio congregava. Ele pediu pra tirar
-                        uma foto... O restante, vocês já sabem, virou a história de amor mais linda que só Deus poderia
-                        escrever.</em></p>
+{% if timeline.habilitado %}
+    <section id="our-story">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 col-xs-12 text-center">
+                    <div class="title-block">
+                        <h1>Nossa <span><em>História</em></span></h1>
+                        <div class="divider"></div>
+                        <p><em>{{ timeline.texto_historia }}</em></p>
+                    </div>
+                </div>
+            </div>
+            <ul class="timeline">
+                {% for itemtimeline in timeline.itemtimeline_set.all %}
+                    <li class="{% cycle 'timeline-verted' 'timeline-inverted' %}">
+                        <div class="timeline-badge"><i class="fa fa-heart" aria-hidden="true"></i></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h2 class="timeline-title">
+                                    <span>{{ itemtimeline.data|date:"d" }} </span>{{ itemtimeline.data|date:"M" }} {{ itemtimeline.data|date:"Y" }}
+                                </h2>
+                            </div>
+                            <div class="timeline-body text-center">
+                                <img src="{{ itemtimeline.foto_url }}" class="img-responsive"
+                                     alt="{{ itemtimeline.titulo }}"/>
+                                <h2 class="timeline-title">{{ itemtimeline.titulo }}</h2>
+                                <p>{{ itemtimeline.descricao }}</p>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+                <li>
+                    <div class="timeline-end">
+                        <div class="timeline-badge"><i class="fa fa-heart" aria-hidden="true"></i></div>
+                    </div>
+                </li>
+            </ul>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 col-xs-12 text-center">
+                    <div class="final-frase">Agora nós estamos prontos para o <span>próximo passo...</span></div>
                 </div>
             </div>
         </div>
-        <ul class="timeline">
-            <li>
-                <div class="timeline-badge"><i class="fa fa-heart" aria-hidden="true"></i></div>
-                <div class="timeline-panel">
-                    <div class="timeline-heading">
-                        <h2 class="timeline-title">Nov <span>29</span> 2015</h2>
-                    </div>
-                    <div class="timeline-body text-center">
-                        <img src="{% static 'img/fotos/29.11.15.jpg' %}" class="img-responsive" alt="Our Story"/>
-                        <h2 class="timeline-title">Nosso primeiro encontro</h2>
-                        <p>Nesse dia, trocamos olhares. Caio pediu pra tirar essa foto, conversamos muito e nunca mais
-                            paramos de nos falar.</p>
-                    </div>
-                </div>
-            </li>
-            <li class="timeline-inverted">
-                <div class="timeline-badge"><i class="fa fa-heart" aria-hidden="true"></i></div>
-                <div class="timeline-panel">
-                    <div class="timeline-heading">
-                        <h2 class="timeline-title">Fev <span>07</span> 2016</h2>
-                    </div>
-                    <div class="timeline-body text-center">
-                        <img src="{% static 'img/fotos/5.02.2016.jpg' %}" class="img-responsive" alt="Our Story"/>
-                        <h2 class="timeline-title">Pedido de namoro</h2>
-                        <p>Não temos uma foto do dia exato, mas foi nesse dia ai que todo mundo ficou sabendo que a
-                            gente estava juntinho.</p>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="timeline-badge"><i class="fa fa-heart" aria-hidden="true"></i></div>
-                <div class="timeline-panel">
-                    <div class="timeline-heading">
-                        <h2 class="timeline-title">Jul <span>02</span> 2016</h2>
-                    </div>
-                    <div class="timeline-body text-center">
-                        <img src="{% static 'img/fotos/4.07.16.jpg' %}" class="img-responsive" alt="Our Story"/>
-                        <h2 class="timeline-title">Primeira Viagem</h2>
-                        <p>Fomos pela primeira vez a praia de Jacumã-PB junto com nossas famílias. Aproveitamos bastante
-                            com eles, tanto que, sempre que podemos, repetimos a dose.</p>
-                    </div>
-                </div>
-            </li>
-            <li class="timeline-inverted">
-                <div class="timeline-badge"><i class="fa fa-heart" aria-hidden="true"></i></div>
-                <div class="timeline-panel">
-                    <div class="timeline-heading">
-                        <h2 class="timeline-title">Out <span>21</span> 2018</h2>
-                    </div>
-                    <div class="timeline-body text-center">
-                        <img src="{% static 'img/fotos/noivado.jpg' %}" class="img-responsive" alt="Our Story"/>
-                        <h2 class="timeline-title">Dia do SIM!</h2>
-                        <p>Com certeza, esse foi o evento mais marcante pra gente. O dia em que demos mais um passo em
-                            direção ao sonho de construirmos nossa família. O dia do SIM!</p>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="timeline-end">
-                    <div class="timeline-badge"><i class="fa fa-heart" aria-hidden="true"></i></div>
-                </div>
-            </li>
-        </ul>
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 col-xs-12 text-center">
-                <div class="final-frase">Agora nós estamos prontos para o <span>próximo passo...</span></div>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
+{% endif %}
 <!-- END SECTION: our-story -->
 
 <!-- START SECTION: counter -->
-<section id="counter" class="img-bg-3" data-stellar-background-ratio="0.5">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 col-xs-12 text-center">
+{% if contador.habilitado %}
+    <section id="counter" class="img-bg-3" data-stellar-background-ratio="0.5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 col-xs-12 text-center">
 
-                <h2>Contando os minutos para o grande dia!</h2>
+                    <h2>Contando os minutos para o grande dia!</h2>
 
-                <!-- Countdown -->
-                <div class="countdown" data-date="2020-04-21 09:00:00"></div>
+                    <!-- Countdown -->
+                    <div class="countdown"
+                         data-date="{{ recepcao.data|date:"Y" }}-{{ recepcao.data|date:"m" }}-{{ recepcao.data|date:"d" }} {{ recepcao.hora|time:"H" }}:{{ recepcao.hora|date:"m" }}:00"></div>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+{% endif %}
 <!-- END SECTION: counter -->
 
 <!-- START SECTION: gallery -->
-<section id="gallery" class="bg-gray-1">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 col-xs-12 text-center">
-                <div class="title-block">
-                    <h1>Galeria de <span><em>Fotos</em></span></h1>
-                    <div class="divider"></div>
-                    <p><em>
-                        Estamos muito felizes em compartilhar esse momento com vocês. Enquanto não chega o
-                        grande dia, criamos um site com um "montão" de sessões para que todos estejam por dentro de
-                        tudo.
-                        Amamos dividir momentos com as pessoas que fazem parte de nossa vida. Nada melhor do que
-                        fotos pra registrar tudo!
-                    </em></p>
-                    <div class="gallery_nav">
-                        <button class="btn btn-primary btn-bordered filter-button active" data-filter="all">Tudo
-                        </button>
-                        <button class="btn btn-primary btn-bordered filter-button" data-filter="gallery-family">Família
-                        </button>
-                        <button class="btn btn-primary btn-bordered filter-button" data-filter="gallery-friends">
-                            Amigos
-                        </button>
-                        <button class="btn btn-primary btn-bordered filter-button" data-filter="gallery-trips">Viagens
-                        </button>
-                        <button class="btn btn-primary btn-bordered filter-button" data-filter="gallery-portraits">
-                            Retratos
-                        </button>
+{% if galeria.habilitado %}
+    <section id="gallery" class="bg-gray-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 col-xs-12 text-center">
+                    <div class="title-block">
+                        <h1>Galeria de <span><em>Fotos</em></span></h1>
+                        <div class="divider"></div>
+                        <p><em>
+                            {{ galeria.texto }}
+                        </em></p>
+                        <div class="gallery_nav">
+                            <button class="btn btn-primary btn-bordered filter-button active" data-filter="all">Tudo
+                            </button>
+                            {% for category in categorias_galeria %}
+                                <button class="btn btn-primary btn-bordered filter-button"
+                                        data-filter="gallery-{{ category.titulo }}">
+                                    {{ category.titulo }}
+                                </button>
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="row gallery-popup">
+                {#            -----------     FAMILIA ------  #}
+                {% for cat in categorias_galeria %}
+                    {% for item in cat.itemgaleria_set.all %}
+                        <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-{{ item.categoria.titulo }}">
+                            <a href="{{ item.foto_url }}" class="mfp-image" title="">
+                                <img src="{{ item.foto_url }} " class="img-responsive"
+                                     alt="Gallery image">
+                            </a>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
         </div>
-        <div class="row gallery-popup">
-            {#            -----------     FAMILIA ------  #}
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-family">
-                <a href="{% static 'i/familia_2.png' %}" class="mfp-image" title="">
-                    <img src="{% static 'i/familia_2.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-family">
-                <a href="{% static 'i/familia_3.png' %}" class="mfp-image" title="">
-                    <img src="{% static 'i/familia_3.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-family">
-                <a href="{% static 'i/familia_4.png' %}" class="mfp-image" title="">
-                    <img src="{% static 'i/familia_4.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-family">
-                <a href="{% static 'i/familia_5.png' %}" class="mfp-image" title="">
-                    <img src="{% static 'i/familia_5.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-family">
-                <a href="{% static 'i/familia_6.png' %}" class="mfp-image" title="">
-                    <img src="{% static 'i/familia_6.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-family">
-                <a href="{% static 'i/familia_7.png' %}" class="mfp-image" title="">
-                    <img src="{% static 'i/familia_7.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-family">
-                <a href="{% static 'i/familia_100.png' %}" class="mfp-image" title="">
-                    <img src="{% static 'i/familia_100.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            {#            -----------     FAMILIA ------  #}
-
-            {#            -----------     AMIGOS ------  #}
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-friends">
-                <a href="{% static 'i/amigos_1.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/amigos_1.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-friends">
-                <a href="{% static 'i/amigos_2.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/amigos_2.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-friends">
-                <a href="{% static 'i/amigos_3.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/amigos_3.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-friends">
-                <a href="{% static 'i/amigos_4.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/amigos_4.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-friends">
-                <a href="{% static 'i/amigos_5.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/amigos_5.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-friends">
-                <a href="{% static 'i/amigos_6.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/amigos_6.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-friends">
-                <a href="{% static 'i/amigos_7.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/amigos_7.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-friends">
-                <a href="{% static 'i/amigos_8.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/amigos_8.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-friends">
-                <a href="{% static 'i/amigos_10.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/amigos_10.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-friends">
-                <a href="{% static 'i/amigos_11.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/amigos_11.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-friends">
-                <a href="{% static 'i/amigos_12.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/amigos_12.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-friends">
-                <a href="{% static 'i/amigos_13.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/amigos_13.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-friends">
-                <a href="{% static 'i/amigos_14.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/amigos_14.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-friends">
-                <a href="{% static 'i/amigos_15.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/amigos_15.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            {#            -----------     AMIGOS ------  #}
-
-            {#            -----------     VIAGENS ------  #}
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-trips">
-                <a href="{% static 'i/viagem_1.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/viagem_1.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-trips">
-                <a href="{% static 'i/viagem_2.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/viagem_2.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-trips">
-                <a href="{% static 'i/viagem_3.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/viagem_3.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-trips">
-                <a href="{% static 'i/viagem_4.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/viagem_4.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-trips">
-                <a href="{% static 'i/viagem_5.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/viagem_5.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-trips">
-                <a href="{% static 'i/viagem_6.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/viagem_6.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-trips">
-                <a href="{% static 'i/viagem_7.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/viagem_7.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-trips">
-                <a href="{% static 'i/viagem_8.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/viagem_8.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-trips">
-                <a href="{% static 'i/viagem_9.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/viagem_9.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-trips">
-                <a href="{% static 'i/viagem_10.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/viagem_10.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-trips">
-                <a href="{% static 'i/viagem_11.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/viagem_12.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-trips">
-                <a href="{% static 'i/viagem_13.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/viagem_13.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-trips">
-                <a href="{% static 'i/viagem_14.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/viagem_14.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-trips">
-                <a href="{% static 'i/viagem_15.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/viagem_15.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-trips">
-                <a href="{% static 'i/viagem_16.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/viagem_16.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-trips">
-                <a href="{% static 'i/viagem_17.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/viagem_17.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-trips">
-                <a href="{% static 'i/viagem_18.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/viagem_18.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-trips">
-                <a href="{% static 'i/viagem_19.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/viagem_19.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-trips">
-                <a href="{% static 'i/viagem_20.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/viagem_20.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-trips">
-                <a href="{% static 'i/viagem_21.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/viagem_21.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-trips">
-                <a href="{% static 'i/viagem_22.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/viagem_22.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-trips">
-                <a href="{% static 'i/viagem_23.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/viagem_23.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-trips">
-                <a href="{% static 'i/viagem_24.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/viagem_24.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-trips">
-                <a href="{% static 'i/viagem_25.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/viagem_25.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-trips">
-                <a href="{% static 'i/viagem_26.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/viagem_26.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-trips">
-                <a href="{% static 'i/viagem_27.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/viagem_27.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-trips">
-                <a href="{% static 'i/viagem_29.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/viagem_29.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-trips">
-                <a href="{% static 'i/viagem_30.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/viagem_30.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            {#            -----------     VIAGENS ------  #}
-
-            {#            -----------     RETRATOS ------  #}
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-portraits">
-                <a href="{% static 'i/retrato_3.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/retrato_3.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-portraits">
-                <a href="{% static 'i/retrato_4.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/retrato_4.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-portraits">
-                <a href="{% static 'i/retrato_5.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/retrato_5.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-portraits">
-                <a href="{% static 'i/retrato_6.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/retrato_6.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-portraits">
-                <a href="{% static 'i/retrato_7.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/retrato_7.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-portraits">
-                <a href="{% static 'i/retrato_8.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/retrato_8.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-portraits">
-                <a href="{% static 'i/retrato_9.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/retrato_9.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-portraits">
-                <a href="{% static 'i/retrato_11.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/retrato_11.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-portraits">
-                <a href="{% static 'i/retrato_13.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/retrato_13.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter gallery-portraits">
-                <a href="{% static 'i/retrato_14.png' %}" class="mfp-image" title="Gallery image title">
-                    <img src="{% static 'i/retrato_14.png' %}" class="img-responsive"
-                         alt="Gallery image">
-                </a>
-            </div>
-            {#            -----------     RETRATOS ------  #}
-        </div>
-    </div>
-</section>
+    </section>
+{% endif %}
 <!-- END SECTION: gallery -->
 
 <!-- START SECTION: featured-people -->
-<section id="featured-people">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 col-xs-12 text-center">
-                <div class="title-block">
-                    <h1>Os <span><em>Padrinhos</em></span></h1>
-                    <div class="divider"></div>
-                    <p><em>Nosso time está pronto! Além de fazer parte de nossas vidas desde o comecinho de tudo, são
-                        pessoas que nos ajudam, aconselham e oram por nós e conosco.</em></p>
+{% if padrinhos.habilitado %}
+    <section id="featured-people">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 col-xs-12 text-center">
+                    <div class="title-block">
+                        <h1>Os <span><em>Padrinhos</em></span></h1>
+                        <div class="divider"></div>
+                        <p><em>{{ padrinhos.texto }}</em></p>
+                    </div>
                 </div>
+            </div>
+            <div class="row">
+                {% for padrinho in padrinhos.itempadrinho_set.all %}
+                    <div class="col-sm-6 col-xs-12 {% cycle ' ' 'featured-right' %}">
+                        <div class="featured">
+                            <img src="{{ padrinho.foto_url }}"
+                                 class="img-responsive img-circle"
+                                 alt="Groom"/>
+                            <div class="text">
+                                <h2>{{ padrinho.nome }}</h2>
+                                {#                        <h4><span><em>Best Man</em></span></h4>#}
+                                {#                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris porttitor non sem eu#}
+                                {#                            faucibus. Aenean pellentesque dui tincidunt, dictum massa congue, euismod ipsum. Duis auctor#}
+                                {#                            in est ac dignissim.</p>#}
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                {% endfor %}
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-6 col-xs-12">
-                <div class="featured">
-                    <img src="{% static 'img/WhatsApp Image 2019-12-10 at 08.56.22.jpeg' %}"
-                         class="img-responsive img-circle"
-                         alt="Groom"/>
-                    <div class="text">
-                        <h2>Luan e Jéssika</h2>
-                        {#                        <h4><span><em>Best Man</em></span></h4>#}
-                        {#                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris porttitor non sem eu#}
-                        {#                            faucibus. Aenean pellentesque dui tincidunt, dictum massa congue, euismod ipsum. Duis auctor#}
-                        {#                            in est ac dignissim.</p>#}
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-                <div class="featured">
-                    <img src="{% static 'img/wellignton.png' %}" class="img-responsive img-circle"
-                         alt="Groom"/>
-                    <div class="text">
-                        <h2>Wellington e Manuelina</h2>
-                        {#                        <h4><span><em>Groomsman</em></span></h4>#}
-                        {#                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris porttitor non sem eu#}
-                        {#                            faucibus. Aenean pellentesque dui tincidunt, dictum massa congue, euismod ipsum. Duis auctor#}
-                        {#                            in est ac dignissim.</p>#}
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-                <div class="featured">
-                    <img src="{% static 'img/luan_nat.jpg' %}" class="img-responsive img-circle"
-                         alt="Groom"/>
-                    <div class="text">
-                        <h2>Luan e Natália</h2>
-                        {#                        <h4><span><em>Groomsman</em></span></h4>#}
-                        {#                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris porttitor non sem eu#}
-                        {#                            faucibus. Aenean pellentesque dui tincidunt, dictum massa congue, euismod ipsum. Duis auctor#}
-                        {#                            in est ac dignissim.</p>#}
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-xs-12 featured-right">
-                <div class="featured">
-                    <img src="{% static 'img/paulo.jpg' %}" class="img-responsive img-circle"
-                         alt="Groom"/>
-                    <div class="text">
-                        <h2>Paulo e Raylla</h2>
-                        {#                        <h4><span><em>Maid of honor</em></span></h4>#}
-                        {#                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris porttitor non sem eu#}
-                        {#                            faucibus. Aenean pellentesque dui tincidunt, dictum massa congue, euismod ipsum. Duis auctor#}
-                        {#                            in est ac dignissim.</p>#}
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-                <div class="featured">
-                    <img src="{% static 'img/ecleilson.jpg' %}" class="img-responsive img-circle"
-                         alt="Groom"/>
-                    <div class="text">
-                        <h2>Ecleilson e Luciana</h2>
-                        {#                        <h4><span><em>Bridesmaid</em></span></h4>#}
-                        {#                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris porttitor non sem eu#}
-                        {#                            faucibus. Aenean pellentesque dui tincidunt, dictum massa congue, euismod ipsum. Duis auctor#}
-                        {#                            in est ac dignissim.</p>#}
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-                <div class="featured">
-                    <img src="{% static 'img/ivonei.png' %}" class="img-responsive img-circle"
-                         alt="Groom"/>
-                    <div class="text">
-                        <h2>Ivonei e Fernanda</h2>
-                        {#                        <h4><span><em>Bridesmaid</em></span></h4>#}
-                        {#                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris porttitor non sem eu#}
-                        {#                            faucibus. Aenean pellentesque dui tincidunt, dictum massa congue, euismod ipsum. Duis auctor#}
-                        {#                            in est ac dignissim.</p>#}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
+{% endif %}
 <!-- END SECTION: featured-people -->
 
 
 <!-- START SECTION: rsvp -->
-<section id="rsvp">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1 col-xs-12 text-center">
-                <div class="title-block">
-                    <h1><span><em>RSVP</em></span></h1>
-                    <div class="divider"></div>
-                    <p>
-                        <em>
-                            Gostaríamos muito de contar com a presença de todos vocês no momento em que nossa união será
-                            abençoada diante de Deus!
-                            A cerimônia será rápida e tentaremos ser extremamente pontuais. Contamos com vocês!
-                        </em>
-                    </p>
-                    <p><em>Por favor, selecione os eventos que você vai participar e preencha o seguinte formulário com
-                        confirme.</em></p>
+{% if rsvp_page.habilitado %}
+    <section id="rsvp">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1 col-xs-12 text-center">
+                    <div class="title-block">
+                        <h1><span><em>RSVP</em></span></h1>
+                        <div class="divider"></div>
+                        <p>
+                            <em>
+                                {{ rsvp_page.texto }}
+                            </em>
+                        </p>
+                        <p><em>Por favor, selecione os eventos que você vai participar e preencha o seguinte formulário
+                            com
+                            confirme.</em></p>
+                    </div>
+
                 </div>
+                <div class="col-md-8 col-md-offset-2 col-xs-12 text-center">
 
-            </div>
-            <div class="col-md-8 col-md-offset-2 col-xs-12 text-center">
-
-                <form id="ajaxForm" data-toggle="validator">
-                    {% csrf_token %}
-                    <div class="row bot-mrg-20">
-                        <div class="col-md-6 text-center">
-                            <input type="checkbox" id="checkbox-2" name="cerimonia" value="Ceremony">
-                            <label for="checkbox-2" class="checkbox-button"><i class="fa fa-circle-o"
-                                                                               aria-hidden="true"></i> Cerimônia</label>
-                        </div>
-                        <div class="col-md-6 text-center">
-                            <input type="checkbox" id="checkbox-3" name="recepcao" value="Party">
-                            <label for="checkbox-3" class="checkbox-button"><i class="fa fa-circle-o"
-                                                                               aria-hidden="true"></i> Recepção</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="name" placeholder="Seu Nome" max="200"
-                                       maxlength="200" required>
-                                <div class="help-block with-errors"></div>
+                    <form id="ajaxForm" data-toggle="validator">
+                        {% csrf_token %}
+                        <div class="row bot-mrg-20">
+                            <div class="col-md-6 text-center">
+                                <input type="checkbox" id="checkbox-2" name="cerimonia" value="Ceremony">
+                                <label for="checkbox-2" class="checkbox-button"><i class="fa fa-circle-o"
+                                                                                   aria-hidden="true"></i>
+                                    Cerimônia</label>
+                            </div>
+                            <div class="col-md-6 text-center">
+                                <input type="checkbox" id="checkbox-3" name="recepcao" value="Party">
+                                <label for="checkbox-3" class="checkbox-button"><i class="fa fa-circle-o"
+                                                                                   aria-hidden="true"></i>
+                                    Recepção</label>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="email" class="form-control" name="email" placeholder="Seu Email" required>
-                                <div class="help-block with-errors"></div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="name" placeholder="Seu Nome" max="200"
+                                           maxlength="200" required>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="email" class="form-control" name="email" placeholder="Seu Email"
+                                           required>
+                                    <div class="help-block with-errors"></div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
                                 <textarea rows="5" class="form-control" name="message"
                                           placeholder="Escreva uma mensagem...​" required></textarea>
-                                <div class="help-block with-errors"></div>
+                                    <div class="help-block with-errors"></div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
 
-                <button class="btn btn-primary btn-lg" id="ajaxFormSubmit" type="submit">Confirmar Presença</button>
+                    <button class="btn btn-primary btn-lg" id="ajaxFormSubmit" type="submit">Confirmar Presença</button>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+{% endif %}
 <!-- END SECTION: rsvp -->
 
 <!-- START SECTION: gift-registry -->
-<section id="gift-registry" class="img-bg-4" data-stellar-background-ratio="0.5">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1 col-xs-12 text-center">
-                <div class="title-block">
-                    <h1>Lista de <span><em>Presentes</em></span></h1>
-                    <div class="divider"></div>
-                    <p><em>Abaixo, estão as listas que fizemos online. Qualquer dúvida, só entrar em contato com a
-                        gente!</em></p>
-                </div>
-                <div id="owl-logo">
-                    <div class="item"><a href="https://www.querodecasamento.com.br/lista-de-casamento/caio-luanna/"
-                                         target="_blank">
-                        <img style="height:91px;" src="{% static 'img/qdc.png' %}" alt="Owl Image">
-                    </a></div>
-                    <div class="item">
-                        <a href="#" data-toggle="modal" data-target="#verona">
-                            <img style="height:91px;" src="{% static 'img/verona.png' %}" alt="Owl Image">
-                        </a>
+{% if presentes.habilitado %}
+    <section id="gift-registry" class="img-bg-4" data-stellar-background-ratio="0.5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1 col-xs-12 text-center">
+                    <div class="title-block">
+                        <h1>Lista de <span><em>Presentes</em></span></h1>
+                        <div class="divider"></div>
+                        <p><em>{{ presentes.texto }}</em></p>
                     </div>
-                    <div class="item">
-                        <a href="#" data-toggle="modal" data-target="#bank">
-                            <img style="height:91px;" src="{% static 'img/fotos/bank.png' %}" alt="Owl Image">
-                        </a>
+
+                    <div id="owl-logo">
+                        {% for pre in presentes.itemlistapresentes_set.all %}
+                            {% if pre.is_site %}
+                                <div class="item"><a
+                                        href="{{ pre.link_url }}"
+                                        target="_blank">
+                                    <img style="height:91px;" src="{{ pre.foto_url }}" alt="Owl Image">
+                                </a></div>
+                            {% elif pre.is_site == False %}
+                                <div class="item">
+                                    <a href="#" data-toggle="modal" data-target="#{{ pre.key }}">
+                                        <img style="height:91px;" src="{{ pre.foto_url }}" alt="Owl Image">
+                                    </a>
+                                </div>
+                            {% else %}
+                                <div class="item">
+                                    <a href="#" data-toggle="modal" data-target="#{{ pre.key }}">
+                                        <img style="height:91px;" src="{{ pre.foto_url }}" alt="Owl Image">
+                                    </a>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
                     </div>
+
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+    {% for prese in presentes.itemlistapresentes_set.all %}
+        {% if prese.is_site == False %}
+            <div class="modal fade" id="{{ prese.key }}" tabindex="-1" role="dialog" aria-labelledby="{{ prese.key }}">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">{{ prese.nome }}</h4>
+                        </div>
+                        <div class="modal-body">
+                            {{ prese.iframe|safe }}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar
+                            </button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Ok
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="modal fade" id="{{ prese.key }}" tabindex="-1" role="dialog" aria-labelledby="{{ prese.key }}">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">{{ prese.nome }}</h4>
+                        </div>
+                        <div class="modal-body text-center">
+                            <img src="{{ prese.foto_url }}" alt="Owl Image"
+                                 class="img-responsive text-center"
+                                 style="display: inline;">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar
+                            </button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Ok
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endif %}
 <!-- END SECTION: gift-registry -->
 
-<div class="modal fade" id="verona" tabindex="-1" role="dialog" aria-labelledby="verona">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title" id="myModalLabel">Lojas Verona</h4>
-            </div>
-            <div class="modal-body">
-                <p class="text-center">Loja de artigos para cama, mesa e banho</p>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.205110588712!2d-35.88214388484773!3d-7.21742939478959!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7ac1e52512e1f6d%3A0xae5eb6086c3a404c!2sLojas%20Verona!5e0!3m2!1spt-BR!2sbr!4v1575996370632!5m2!1spt-BR!2sbr"
-                        width="100%" height="300" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="bank" tabindex="-1" role="dialog" aria-labelledby="bank">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title" id="myModalLabel">Conta Bancária</h4>
-            </div>
-            <div class="modal-body text-center">
-                <p class="text-center">Conta Corrente para Depósito</p>
-                <img src="{% static 'img/fotos/bank.jpg' %}" alt="Owl Image" class="img-responsive text-center" style="display: inline;">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
-            </div>
-        </div>
-    </div>
-</div>
 <!-- START SECTION: mural -->
-<section id="mural">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1 col-xs-12 text-center">
-                <div class="title-block">
-                    <h1>Mural de <span><em>Recados</em></span></h1>
-                    <div class="divider"></div>
-                    <p><em>
-                        Por favor, não saia deste site sem deixar um recado para nós. Sua mensagem é muito importante, e
-                        gostaríamos de recebê-la. Nós receberemos e
-                        publicaremos as melhores em nossa página.
-                    </em></p>
+{% if mural.habilitado %}
+    <section id="mural">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1 col-xs-12 text-center">
+                    <div class="title-block">
+                        <h1>Mural de <span><em>Recados</em></span></h1>
+                        <div class="divider"></div>
+                        <p><em>
+                            {{ mural.texto }}
+                        </em></p>
+                    </div>
+
                 </div>
+                <div class="col-md-8 col-md-offset-2 col-xs-12 text-center">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2 col-xs-12">
+                            {% for recado in recados %}
+                                <div class="featured">
+                                    {% if recado.foto %}
+                                        <img src="{{ recado.foto }}"
+                                             class="img-responsive img-circle"
+                                             alt="{{ recado.nome }}"/>
+                                    {% else %}
+                                        <img src="http://placehold.it/500x500"
+                                             class="img-responsive img-circle"
+                                             alt="Groom"/>
+                                    {% endif %}
 
-            </div>
-            <div class="col-md-8 col-md-offset-2 col-xs-12 text-center">
-                <div class="row">
-                    <div class="col-sm-8 col-sm-offset-2 col-xs-12">
-                        {% for recado in recados %}
-                            <div class="featured">
-                                {% if recado.foto %}
-                                    <img src="{{ recado.foto }}"
-                                         class="img-responsive img-circle"
-                                         alt="{{ recado.nome }}"/>
-                                {% else %}
-                                    <img src="http://placehold.it/500x500"
-                                         class="img-responsive img-circle"
-                                         alt="Groom"/>
-                                {% endif %}
+                                    <div class="text">
+                                        <h2>{{ recado.nome }}</h2>
+                                        <p>{{ recado.texto }}</p>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            {% endfor %}
 
-                                <div class="text">
-                                    <h2>{{ recado.nome }}</h2>
-                                    <p>{{ recado.texto }}</p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-8 col-md-offset-2 col-xs-12 text-center">
+
+                    <form id="ajaxFormMural" data-toggle="validator">
+                        {% csrf_token %}
+                        <div class="row bot-mrg-20">
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="name" placeholder="Seu Nome" max="200"
+                                           maxlength="200" required>
+                                    <div class="help-block with-errors"></div>
                                 </div>
                             </div>
-                            <div class="clearfix"></div>
-                        {% endfor %}
-
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-md-8 col-md-offset-2 col-xs-12 text-center">
-
-                <form id="ajaxFormMural" data-toggle="validator">
-                    {% csrf_token %}
-                    <div class="row bot-mrg-20">
-
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="name" placeholder="Seu Nome" max="200"
-                                       maxlength="200" required>
-                                <div class="help-block with-errors"></div>
-                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
                                 <textarea rows="5" class="form-control" name="message"
                                           placeholder="Escreva sua mensagem ...​" required></textarea>
-                                <div class="help-block with-errors"></div>
+                                    <div class="help-block with-errors"></div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
 
-                <button class="btn btn-primary btn-lg" id="ajaxFormMuralSubmit" type="submit">Enviar Recado</button>
+                    <button class="btn btn-primary btn-lg" id="ajaxFormMuralSubmit" type="submit">Enviar Recado</button>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+{% endif %}
 <!-- END SECTION: mural -->
 
 <!-- START: footer -->
-<section id="footer" class="img-bg-5" data-stellar-background-ratio="0.5">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1 col-xs-12 text-center">
-                <h1>Nenhum dos dois é melhor do que os dois juntos.</h1>
-                <ul class="names">
-                    <li>Caio</li>
-                    <li class="circle">&amp;</li>
-                    <li>Luanna</li>
-                </ul>
-                <div class="copyright">All Rights Reserved © | Design: <span><a href="#"
-                                                                                target="_blank" style="color: #7b7571;">Caio Marinho</a></span>
+{% if footer.habilitado %}
+    <section id="footer" class="img-bg-5" data-stellar-background-ratio="0.5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1 col-xs-12 text-center">
+                    <h1>{{ footer.frase }}</h1>
+                    <ul class="names">
+                        <li>{{ noivo.nome }}</li>
+                        <li class="circle">&amp;</li>
+                        <li>{{ noiva.nome }}</li>
+                    </ul>
+                    <div class="copyright">All Rights Reserved © | Design: <span><a href="#"
+                                                                                    target="_blank"
+                                                                                    style="color: #7b7571;">Caio Marinho</a></span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+{% endif %}
 <!-- END: footer -->
 
 <!-- START: scripts -->

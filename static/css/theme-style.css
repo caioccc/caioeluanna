@@ -136,27 +136,6 @@ h1 span, h2 span, h3 span, h4 span, h5 span, h6 span{
 section{
 	padding:120px 0px;
 }
-section.img-bg-2{
-	background:url(../img/bg-2.jpg) no-repeat;
-	background-attachment:fixed;
-	background-size:cover;
-	color:#FFF;
-}
-section.img-bg-3{
-	background:url(../img/bg-3.jpg) no-repeat;
-	background-attachment:fixed;
-	background-size:cover;
-}
-section.img-bg-4{
-	background:url(../img/bg-4.jpg) no-repeat;
-	background-attachment:fixed;
-	background-size:cover;
-}
-section.img-bg-5{
-	background:url(../img/bg-5.jpg) no-repeat;
-	background-attachment:fixed;
-	background-size:cover;
-}
 
 /* ==================================================================
 	2. Navigation
@@ -205,7 +184,6 @@ section.img-bg-5{
 	3. Section - Home (banner)
 ================================================================== */
 section#home{
-	background:url(../img/bg-1.jpg) no-repeat;
 	background-attachment:fixed;
 	background-size:cover;
 	text-align:center;
