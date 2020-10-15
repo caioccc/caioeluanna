@@ -197,7 +197,8 @@ class Pagina_Frase(Habilitavel):
         verbose_name = "Pagina de Frase Principal"
         verbose_name_plural = "Pagina de Frase Principal"
 
-    frase = models.TextField(blank=True, null=True)
+    frase = models.TextField(blank=True, null=True,
+                             default=u'Será uma honra ter você no momento mais incrível das nossas vidas, onde finalmente nos tornaremos um.')
     foto_background_url = models.URLField(blank=True, null=True, default='https://imgur.com/QnAo2qj.jpg')
     file = models.FileField(blank=True, null=True, verbose_name='Foto Background')
 
@@ -296,7 +297,7 @@ class Pagina_Galeria(Habilitavel):
         verbose_name_plural = "Pagina de Galeria"
 
     titulo_menu = models.CharField(max_length=255, blank=True, null=True, default='Galeria de Fotos')
-    texto = models.TextField(blank=True, null=True)
+    texto = models.TextField(blank=True, null=True, default=u'Nada melhor do que fotos pra registrar tudo!')
 
 
 class ItemGaleria(TimeStamped):
@@ -383,7 +384,8 @@ class Pagina_ListaPresentes(Habilitavel):
         verbose_name_plural = "Pagina de Lista de Presentes"
 
     titulo_menu = models.CharField(max_length=255, blank=True, null=True, default='Lista de Presentes')
-    texto = models.TextField(blank=True, null=True)
+    texto = models.TextField(blank=True, null=True,
+                             default=u'Abaixo, estão as listas que fizemos online. Qualquer dúvida, só entrar em contato com a gente!')
     foto_background_url = models.URLField(blank=True, null=True, default='https://imgur.com/UWpXoS1.jpg')
     file = models.FileField(blank=True, null=True, verbose_name='Foto Background')
 
@@ -441,7 +443,8 @@ class Pagina_Mural(Habilitavel):
         verbose_name_plural = "Pagina de Mural"
 
     titulo_menu = models.CharField(max_length=255, blank=True, null=True, default='Mural')
-    texto = models.TextField(blank=True, null=True)
+    texto = models.TextField(blank=True, null=True,
+                             default=u'Por favor, não saia deste site sem deixar um recado para nós. Sua mensagem é muito importante, e gostaríamos de recebê-la. Nós receberemos e publicaremos as melhores em nossa página.')
 
 
 class Pagina_Footer(Habilitavel):
