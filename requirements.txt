@@ -5,3 +5,4 @@ gunicorn==19.4.5
 psycopg2
 whitenoise==2.0.6
 django-ckeditor==5.0.3
+pyimgur
