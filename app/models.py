@@ -260,6 +260,21 @@ class Pagina_Contador(Habilitavel):
         verbose_name = "Contador"
         verbose_name_plural = "Contador"
 
+    foto_background_url = models.URLField(blank=True, null=True, default='https://imgur.com/WvzW9gn.jpg')
+    file = models.FileField(blank=True, null=True, verbose_name='Foto Background')
+
+    def save(self, *args, **kwargs):
+        try:
+            CLIENT_ID = "cdadf801dc167ab"
+            bencode = b64encode(self.file.read())
+            client = pyimgur.Imgur(CLIENT_ID)
+            r = client._send_request('https://api.imgur.com/3/image', method='POST', params={'image': bencode})
+            file = r['link']
+            self.foto_background_url = file
+        except (Exception,):
+            pass
+        return super(Pagina_Contador, self).save(*args, **kwargs)
+
 
 class CategoriaGaleria(TimeStamped):
     class Meta:
@@ -369,6 +384,20 @@ class Pagina_ListaPresentes(Habilitavel):
 
     titulo_menu = models.CharField(max_length=255, blank=True, null=True, default='Lista de Presentes')
     texto = models.TextField(blank=True, null=True)
+    foto_background_url = models.URLField(blank=True, null=True, default='https://imgur.com/UWpXoS1.jpg')
+    file = models.FileField(blank=True, null=True, verbose_name='Foto Background')
+
+    def save(self, *args, **kwargs):
+        try:
+            CLIENT_ID = "cdadf801dc167ab"
+            bencode = b64encode(self.file.read())
+            client = pyimgur.Imgur(CLIENT_ID)
+            r = client._send_request('https://api.imgur.com/3/image', method='POST', params={'image': bencode})
+            file = r['link']
+            self.foto_background_url = file
+        except (Exception,):
+            pass
+        return super(Pagina_ListaPresentes, self).save(*args, **kwargs)
 
 
 class ItemListaPresentes(TimeStamped):
@@ -421,3 +450,17 @@ class Pagina_Footer(Habilitavel):
         verbose_name_plural = "Pagina de Footer"
 
     frase = models.TextField(blank=True, null=True)
+    foto_background_url = models.URLField(blank=True, null=True, default='https://imgur.com/nMHYQd9.jpg')
+    file = models.FileField(blank=True, null=True, verbose_name='Foto Background')
+
+    def save(self, *args, **kwargs):
+        try:
+            CLIENT_ID = "cdadf801dc167ab"
+            bencode = b64encode(self.file.read())
+            client = pyimgur.Imgur(CLIENT_ID)
+            r = client._send_request('https://api.imgur.com/3/image', method='POST', params={'image': bencode})
+            file = r['link']
+            self.foto_background_url = file
+        except (Exception,):
+            pass
+        return super(Pagina_Footer, self).save(*args, **kwargs)
